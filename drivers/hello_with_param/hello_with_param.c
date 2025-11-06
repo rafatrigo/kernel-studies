@@ -1,0 +1,35 @@
+
+#include <linux/module.h>
+#include <linux/init.h>
+#include <linux/moduleparam.h> // needed for parameters
+#include <linux/kernel.h> // good practice include for printk, even if it alredy includd by module.h
+
+static int my_param =  0;
+
+// variable name
+// variable type
+// permission
+module_param(my_param, int, S_IRUGO);
+
+//  parameter description
+MODULE_PARM_DESC(my_param, "Just an int value.");
+
+static int __init init_func(void)
+{
+	// KERN_INFO - define the priorit level of a message
+	printk(KERN_INFO "Driver loaded with value: %d\n", my_param);
+	return 0;
+}
+
+static void __exit exit_func(void)
+{
+	printk(KERN_INFO "Driver unloaded with value: %d\n", my_param);
+}
+
+module_init(init_func);
+module_exit(exit_func);
+
+MODULE_LICENSE("GPL");
+MODULE_AUTHOR("rafatrigo");
+MODULE_DESCRIPTION("My first module with parameter");
+
