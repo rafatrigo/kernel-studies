@@ -2,16 +2,17 @@
 
 # Kernel Log Severity
 
-| **Macro**          | **Level (String)** | **Description**                                                                       |     |
-| ------------------ | ------------------ | ------------------------------------------------------------------------------------- | --- |
-| **`KERN_EMERG`**   | `<0>`              | **Emergency:** System is unusable. (Ex: Kernel Panic)                                 |     |
-| **`KERN_ALERT`**   | `<1>`              | **Alert:** Action must be taken immediately.                                          |     |
-| **`KERN_CRIT`**    | `<2>`              | **Critical:** Critical conditions. (Ex: Severe hardware error)                        |     |
-| **`KERN_ERR`**     | `<3>`              | **Error:** Error conditions. Used to report failures.                                 |     |
-| **`KERN_WARNING`** | `<4>`              | **Warning:** Warning conditions. Something is not ideal, but it works.                |     |
-| **`KERN_NOTICE`**  | `<5>`              | **Notice:** Normal, but a notable condition.                                          |     |
-| **`KERN_INFO`**    | `<6>`              | **Informational:** Informational messages. (Ex: "Driver loaded", "Network connected") |     |
-| **`KERN_DEBUG`**   | `<7>`              | **Debug:** Debug-level messages.                                                      |     |
+| **Macro**          | **Level (String)** | **Description**                                                                       | Macro                                                                                                                                                                                                                                 |
+| ------------------ | ------------------ | ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **`KERN_EMERG`**   | `<0>`              | **Emergency:** System is unusable. (Ex: Kernel Panic)                                 | [`pr_emerg()`](https://www.kernel.org/doc/html/v6.7/core-api/printk-basics.html#c.pr_emerg "pr_emerg")                                                                                                                                |
+| **`KERN_ALERT`**   | `<1>`              | **Alert:** Action must be taken immediately.                                          | [`pr_alert()`](https://www.kernel.org/doc/html/v6.7/core-api/printk-basics.html#c.pr_alert "pr_alert")                                                                                                                                |
+| **`KERN_CRIT`**    | `<2>`              | **Critical:** Critical conditions. (Ex: Severe hardware error)                        | [`pr_crit()`](https://www.kernel.org/doc/html/v6.7/core-api/printk-basics.html#c.pr_crit "pr_crit")                                                                                                                                   |
+| **`KERN_ERR`**     | `<3>`              | **Error:** Error conditions. Used to report failures.                                 | [`pr_err()`](https://www.kernel.org/doc/html/v6.7/core-api/printk-basics.html#c.pr_err "pr_err")                                                                                                                                      |
+| **`KERN_WARNING`** | `<4>`              | **Warning:** Warning conditions. Something is not ideal, but it works.                | [`pr_warn()`](https://www.kernel.org/doc/html/v6.7/core-api/printk-basics.html#c.pr_warn "pr_warn")                                                                                                                                   |
+| **`KERN_NOTICE`**  | `<5>`              | **Notice:** Normal, but a notable condition.                                          | [`pr_notice()`](https://www.kernel.org/doc/html/v6.7/core-api/printk-basics.html#c.pr_notice "pr_notice")                                                                                                                             |
+| **`KERN_INFO`**    | `<6>`              | **Informational:** Informational messages. (Ex: "Driver loaded", "Network connected") | [`pr_info()`](https://www.kernel.org/doc/html/v6.7/core-api/printk-basics.html#c.pr_info "pr_info")                                                                                                                                   |
+| **`KERN_DEBUG`**   | `<7>`              | **Debug:** Debug-level messages.                                                      | [`pr_debug()`](https://www.kernel.org/doc/html/v6.7/core-api/printk-basics.html#c.pr_debug "pr_debug") and [`pr_devel()`](https://www.kernel.org/doc/html/v6.7/core-api/printk-basics.html#c.pr_devel "pr_devel") if DEBUG is defined |
+| KERN_CONT          | <c>                | Continues  a previous log message in the same line.                                   | [`pr_cont()`](https://www.kernel.org/doc/html/v6.7/core-api/printk-basics.html#c.pr_cont "pr_cont")                                                                                                                                   |
 
 **Usage**
 ```c
