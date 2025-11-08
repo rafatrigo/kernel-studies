@@ -1,3 +1,4 @@
+#define pr_fmt(fmt) KBUILD_MODNAME ": " fmt // defines the format of printk when using the macro pr_*
 
 #include <linux/module.h>
 #include <linux/init.h>
@@ -9,21 +10,21 @@ static int my_param =  0;
 // variable name
 // variable type
 // permission
-module_param(my_param, int, S_IRUGO);
+module_param(my_param, int, 0444);
 
 //  parameter description
 MODULE_PARM_DESC(my_param, "Just an int value.");
 
 static int __init init_func(void)
 {
-	// KERN_INFO - define the priorit level of a message
-	printk(KERN_INFO "Driver loaded with value: %d\n", my_param);
+	// moder way of doing -> printk(KERN_INFO "Driver loaded with value: %d\n", my_param);
+	pr_info("Driver loaded with value: %d\n", my_param);
 	return 0;
 }
 
 static void __exit exit_func(void)
 {
-	printk(KERN_INFO "Driver unloaded with value: %d\n", my_param);
+	pr_info("Driver unloaded with value: %d\n", my_param);
 }
 
 module_init(init_func);
